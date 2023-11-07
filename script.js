@@ -25,6 +25,18 @@ score0El.textContent = 0;
 score1El.textContent = 0;
 diceEl.classList.add('hidden');
 
+let currentScore = 0;
+let activePlayer = 0;
+
 rollDice.addEventListener('click', function () {
   const randomDice = Math.floor(Math.random() * 6) + 1;
+  diceEl.classList.remove('hidden');
+  diceEl.src = `dice-${randomDice}.png`;
+
+  if (randomDice !== 1) {
+    document.getElementById(`current--${activePlayer}`).textContent =
+      randomDice;
+  } else {
+    activePlayer = activePlayer === 0 ? 1 : 0;
+  }
 });
